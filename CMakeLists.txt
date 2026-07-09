@@ -77,6 +77,9 @@ message("SRC_DIR: ${SRC_DIR}")
 
 set(SOURCES
     ${SRC_DIR}/main.cpp
+    ${SRC_DIR}/filter_selector.cpp
+    ${SRC_DIR}/filter_sobel.cpp
+    ${SRC_DIR}/image.cpp
 )
 
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}")
