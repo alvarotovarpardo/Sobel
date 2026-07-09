@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+project(Sobel)  
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+option(USE_CONAN "Use Conan for package management" ON)
+
+find_package(OpenCV REQUIRED)
+
+set(SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+if(USE_CONAN)
+    target_link_libraries(${PROJECT_NAME} PRIVATE opencv::opencv)
+else()
+    target_include_directories(${PROJECT_NAME} PRIVATE ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+endif()

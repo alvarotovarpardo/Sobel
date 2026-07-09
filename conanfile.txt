@@ -1,0 +1,14 @@
+[requires]
+opencv/4.8.1
+
+[options]
+opencv/*:with_ffmpeg=False
+opencv/*:with_webp=False
+
+[generators]
+CMakeToolchain
+AutotoolsToolchain
+CMakeDeps
+
+[layout]
+cmake_layout
