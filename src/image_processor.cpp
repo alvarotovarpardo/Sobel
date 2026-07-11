@@ -6,7 +6,7 @@ std::unique_ptr<Image> ImageProcessor::loadImage(const std::string& imagePath){
         cv::Mat readMat = cv::imread(imagePath, cv::IMREAD_UNCHANGED);
 
         if(readMat.empty()){
-            throw std::runtime_error("Image could not be loaded.")
+            throw std::runtime_error("Image could not be loaded.");
         }
 
         std::unique_ptr<Image> pImage = std::make_unique<Image>();
@@ -27,5 +27,15 @@ std::unique_ptr<Image> ImageProcessor::loadImage(const std::string& imagePath){
     } catch(const std::exception& error){
         std::cerr << "LoadImage - Exception " << error.what() << "\n";
         return nullptr;
+    }
+}
+
+bool ImageProcessor::saveImage(const std::string& savePath, Image& image){
+    try {
+        cv::Mat outputMat = image.getFrameCV();
+        return cv::imwrite(savePath, outputMat);
+    } catch(const std::exception& error){
+        std::cerr << "Save Image - Exception " << error.what() << "\n";
+        return false;
     }
 }

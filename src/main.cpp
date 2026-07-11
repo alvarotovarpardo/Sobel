@@ -1,6 +1,7 @@
 #include <iostream>
 #include <filesystem>
 #include "filter_selector.h"
+#include "image_processor.h"
 
 int main(int argc, char** argv)
 {
@@ -10,14 +11,18 @@ int main(int argc, char** argv)
     }
 
     try {
-        std::unique_ptr<FilterBase> pFilter = FilterSelector::createFilter(filterName);
+        std::unique_ptr<Image> pImage = ImageProcessor::loadImage("C:/CODE2/Sobel/media/input_sample.jpg");
+        if(pImage == nullptr) return -1;
 
+        std::unique_ptr<FilterBase> pFilter = FilterSelector::createFilter(filterName);
+        Image outputImage;
         if (pFilter) {
-            // Image img = ...;
-            // Image out = pFilter->applyFilter(img);
+            outputImage = pFilter->applyFilter(*pImage);
         } else {
             std::cerr << "Null filter selected" << std::endl;
         }
+
+        if(!ImageProcessor::saveImage("C:/CODE2/Sobel/media/output_sample.jpg", outputImage)) return -1;
 
     } catch (const std::exception& e) {
         std::cerr << "Execution error: " << e.what() << std::endl;

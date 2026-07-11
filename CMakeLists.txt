@@ -80,22 +80,19 @@ set(SOURCES
     ${SRC_DIR}/filter_selector.cpp
     ${SRC_DIR}/filter_sobel.cpp
     ${SRC_DIR}/image.cpp
+    ${SRC_DIR}/image_processor.cpp
 )
 
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}")
 
-include_directories(${FOLDER_DIR})
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} 
     PRIVATE 
-        ${CONAN_INCLUDE_DIRS} 
-        ${OpenCV_INCLUDE_DIRS} 
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE 
-        ${CONAN_LIBS} 
-        ${OpenCV_LIBS} 
+        opencv::opencv 
 )
