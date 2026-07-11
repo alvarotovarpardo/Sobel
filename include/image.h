@@ -22,5 +22,4 @@ private:
     int m_iWidth;
     int m_iHeight;
     int m_iChannels;
-        
 };
