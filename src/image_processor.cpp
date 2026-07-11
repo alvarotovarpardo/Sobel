@@ -15,12 +15,15 @@ std::unique_ptr<Image> ImageProcessor::loadImage(const std::string& imagePath){
         pImage->setChannels(readMat.channels());
         
         size_t imageMemSize = readMat.total() * readMat.elemSize();
-
+        pImage->resize(imageMemSize);
+        std::memcpy(pImage->matData.data(), readMat.ptr(), imageMemSize);
 
     } catch(const cv::Exception& error){
-        std::cerr << "Load error " << error.what() << "\n";
+        std::cerr << "LoadImage - Load error " << error.what() << "\n";
         return nullptr;
     } catch(const std::bad_alloc& error){
-        std::
+        std::cerr << "LoadImage - Memory allocation error " << error.what() << "\n";
+    } catch(const std::exception& error){
+        std::cerr << "LoadImage - Exception " << error.what() << "\n";
     }
 }
