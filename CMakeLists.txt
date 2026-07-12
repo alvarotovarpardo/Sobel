@@ -50,7 +50,48 @@ if(WIN32)
         endif()
     endif()
 elseif(UNIX)
-    # TO BE DEFINED
+    message(STATUS "Setting environment for UNIX")
+    if(NOT CMAKE_TOOLCHAIN_FILE)
+        if(NOT CMAKE_BUILD_TYPE)
+            execute_process(
+                COMMAND conan profile path default
+                OUTPUT_VARIABLE CONAN_PROFILE_PATH
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+            )
+            if(EXISTS "${CONAN_PROFILE_PATH}")
+                file(STRINGS "${CONAN_PROFILE_PATH}" CONAN_BUILD_TYPE_LINE REGEX "^build_type=")
+                string(REPLACE "build_type=" "" CMAKE_BUILD_TYPE "${CONAN_BUILD_TYPE_LINE}")
+                message(STATUS "Detected Conan build type: ${CMAKE_BUILD_TYPE}")
+            else()
+                set(CMAKE_BUILD_TYPE "Release")
+            endif()
+        endif()
+        if(NOT CONAN_PACKAGE)
+        IF(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE}/generators/conan_toolchain.cmake")
+        message(STATUS "Running Conan install...")
+        execute_process(
+            COMMAND  conan install . --build=missing -r conancenter -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=true -s build_type=${CMAKE_BUILD_TYPE} --output-folder=build/${CMAKE_BUILD_TYPE} -c tools.cmake.cmake_layout:build_folder=.
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            RESULT_VARIABLE CONAN_RESULT
+        )
+        endif()
+        get_filename_component(TOOLCHAIN_PATH2
+            "${CMAKE_CURRENT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE}/generators/conan_toolchain.cmake"
+            ABSOLUTE
+        )
+        message(STATUS "Searching Conan Toolchain at: ${TOOLCHAIN_PATH2}")
+            if(EXISTS ${TOOLCHAIN_PATH2})
+                set ( CMAKE_TOOLCHAIN_FILE_SOBEL ${TOOLCHAIN_PATH2})
+                include(${TOOLCHAIN_PATH2})
+            else()
+                message(WARNING "conan_toolchain.cmake not found at ${TOOLCHAIN_PATH2}")
+            endif()
+        else()
+            message("Sobel compiling for package")
+            get_filename_component(TOOLCHAIN_PATH2 "${CMAKE_SOURCE_DIR}/build_${CMAKE_BUILD_TYPE}/generators/conan_toolchain.cmake" ABSOLUTE)
+            include(${TOOLCHAIN_PATH2})
+        endif()
+    endif()
 endif()
 
 project(Sobel)
