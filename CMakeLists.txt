@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 cmake_policy(SET CMP0091 NEW)
 message(STATUS "Policy CMP0091 set NEW")
-option(CONAN_PACKAGE "Flag ON if is Conan package" OFF)
 
+option(CONAN_PACKAGE "Flag ON if is Conan package" OFF)
+option(BUILD_CLI "Build the command line interface" ON)
+option(BUILD_ANDROID "Build the Android application" OFF)
+option(BUILD_QT "Build the Qt application" OFF)
 
 if(WIN32)
     message(STATUS "Setting environment for Windows")
@@ -123,26 +126,16 @@ set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 message("SRC_DIR: ${SRC_DIR}")
 
 
-set(SOURCES
-    ${SRC_DIR}/main.cpp
-    ${SRC_DIR}/filter_selector.cpp
-    ${SRC_DIR}/filter_sobel.cpp
-    ${SRC_DIR}/image.cpp
-    ${SRC_DIR}/image_processor.cpp
-)
+add_subdirectory(core)
 
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}")
+if(BUILD_CLI)
+    add_subdirectory(cli)
+endif()
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+if(BUILD_QT)
+    add_subdirectory(qt)
+endif()
 
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-if(TARGET opencv::opencv)
-    message(STATUS "Linking OpenCV target via Conan")
-    target_link_libraries(${PROJECT_NAME} PRIVATE opencv::opencv OpenMP::OpenMP_CXX)
-else()
-    message(STATUS "OpenCV target via CMake variables")
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
+if(BUILD_ANDROID)
+    add_subdirectory(android)
 endif()

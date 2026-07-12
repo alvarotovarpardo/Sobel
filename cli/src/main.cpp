@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     }
 
     try {
-        std::unique_ptr<Image> pImage = ImageProcessor::loadImage("../media/input_sample.jpg");
+        std::unique_ptr<Image> pImage = ImageProcessor::loadImage("/Users/atovarpardo/Documents/Code/Sobel/media/input_sample.jpg");
         if(pImage == nullptr) return -1;
 
         std::unique_ptr<FilterBase> pFilter = FilterSelector::createFilter(filterName);
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
             std::cerr << "Null filter selected" << std::endl;
         }
 
-        if(!ImageProcessor::saveImage("../media/output_sample.jpg", outputImage)) return -1;
+        if(!ImageProcessor::saveImage("/Users/atovarpardo/Documents/Code/Sobel/media/output_sample.jpg", outputImage)) return -1;
 
     } catch (const std::exception& e) {
         std::cerr << "Execution error: " << e.what() << std::endl;
