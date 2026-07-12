@@ -21,6 +21,10 @@ cmake --build . --config Release
 
 If Conan is not used, one must install the dependencies on his own. It is: OpenCV [...].
 Sobel can be compiled with
+LINUX:
 ```bash
-to be defined
+mkdir build && cd build
+cmake .. -DCMAKE_PREFIX_PATH="$(brew --prefix opencv)"
+cmake --build . --config Release
 ```
+WINDOWS:
