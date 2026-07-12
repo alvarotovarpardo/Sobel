@@ -1,5 +1,6 @@
 [requires]
 opencv/4.8.1
+llvm-openmp/20.1.6
 
 [options]
 opencv/*:with_ffmpeg=False

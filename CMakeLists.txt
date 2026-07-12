@@ -94,7 +94,7 @@ elseif(UNIX)
     endif()
 endif()
 
-project(Sobel)
+project(Sobel CXX)
 
 set(TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/generators/conan_toolchain.cmake" CACHE STRING "Toolchain file")
 
@@ -109,6 +109,13 @@ find_path(OpenCV_INCLUDE_DIR
 )
 
 find_package(OpenCV REQUIRED CONFIG)
+
+if(APPLE)
+    set(OpenMP_CXX_FLAGS "-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include")
+    set(OpenMP_CXX_LIB_NAMES "omp")
+    set(OpenMP_omp_LIBRARY "/opt/homebrew/opt/libomp/lib/libomp.dylib")
+endif()
+find_package(OpenMP REQUIRED)
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
@@ -134,8 +141,8 @@ target_include_directories(${PROJECT_NAME}
 )
 if(TARGET opencv::opencv)
     message(STATUS "Linking OpenCV target via Conan")
-    target_link_libraries(${PROJECT_NAME} PRIVATE opencv::opencv )
+    target_link_libraries(${PROJECT_NAME} PRIVATE opencv::opencv OpenMP::OpenMP_CXX)
 else()
     message(STATUS "OpenCV target via CMake variables")
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
 endif()

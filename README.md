@@ -24,7 +24,7 @@ Sobel can be compiled with
 LINUX:
 ```bash
 mkdir build && cd build
-cmake .. -DCMAKE_PREFIX_PATH="$(brew --prefix opencv)"
+cmake .. -DCMAKE_PREFIX_PATH="$(brew --prefix opencv);$(brew --prefix libomp)"
 cmake --build . --config Release
 ```
 WINDOWS:
