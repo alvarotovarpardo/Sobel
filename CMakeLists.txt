@@ -91,8 +91,10 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE 
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-
-target_link_libraries(${PROJECT_NAME} 
-    PRIVATE 
-        opencv::opencv 
-)
+if(TARGET opencv::opencv)
+    message(STATUS "Linking OpenCV target via Conan")
+    target_link_libraries(${PROJECT_NAME} PRIVATE opencv::opencv )
+else()
+    message(STATUS "OpenCV target via CMake variables")
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+endif()
