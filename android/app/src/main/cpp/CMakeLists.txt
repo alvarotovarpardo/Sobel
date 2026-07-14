@@ -9,7 +9,7 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${OpenMP_CXX_FLAGS}"
 add_subdirectory(../../../../../core core_build)
 
 add_library(${CMAKE_PROJECT_NAME} SHARED
-        native-lib.cpp)
+        android_bridge.cpp)
 
 find_library(log-lib log)
 find_library(jnigraphics-lib jnigraphics)
