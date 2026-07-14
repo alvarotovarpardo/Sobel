@@ -1,4 +1,5 @@
 #include "image_processor.h"
+#ifndef __ANDROID__
 
 std::unique_ptr<Image> ImageProcessor::loadImage(const std::string& imagePath){
     
@@ -39,3 +40,5 @@ bool ImageProcessor::saveImage(const std::string& savePath, Image& image){
         return false;
     }
 }
+
+#endif // !__ANDROID__

@@ -1,14 +1,13 @@
 #pragma once
 #include <vector>
 #include <filesystem>
-#include <opencv2/opencv.hpp>
 
 class Image {
 public:
     Image();
-    
+    Image(int width, int height, int channels, const uint8_t* matdata);
+
     const std::vector<uint8_t>& getFrameData() const { return matData; }
-    const cv::Mat getFrameCV() { return cv::Mat(m_iHeight, m_iWidth, CV_8UC(m_iChannels), matData.data()); }
 
     int getWidth()  {return m_iWidth; };
     int getHeight() {return m_iHeight;};
