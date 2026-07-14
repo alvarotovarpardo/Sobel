@@ -4,16 +4,13 @@ plugins {
 
 android {
     namespace = "com.example.sobelandroid"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.example.sobelandroid"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -21,10 +18,12 @@ android {
     }
 
     buildTypes {
-        release {
-            optimization {
-                enable = false
-            }
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
