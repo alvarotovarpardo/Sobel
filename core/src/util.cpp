@@ -25,3 +25,7 @@ std::string Util::getImageFolder(const std::string& fullPath)
     std::filesystem::path path(fullPath);
     return path.parent_path().generic_string();
 }
+
+std::string Util::getImageFormat(const std::string& path) {
+    return std::filesystem::path(path).extension().string();
+}

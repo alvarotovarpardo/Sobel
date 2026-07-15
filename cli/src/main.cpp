@@ -9,6 +9,7 @@ int main(int argc, char** argv)
     std::string filterName = "Sobel";
     std::string imagePath;
     std::string imageFolder;
+    
     if (argc > 1) {
         imagePath = argv[1];
         imageFolder = Util::getImageFolder(imagePath);
@@ -23,7 +24,7 @@ int main(int argc, char** argv)
             return -1;
         }
     }
-    std::string outputPath = imageFolder + "/output_image.jpg";
+    std::string outputPath = imageFolder + "/output_image" + Util::getImageFormat(imagePath);
 
     if(argc > 2) {
         filterName = argv[2];

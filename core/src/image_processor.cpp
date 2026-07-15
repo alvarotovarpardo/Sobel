@@ -39,7 +39,7 @@ std::unique_ptr<Image> ImageProcessor::loadImage(const std::string& imagePath){
 bool ImageProcessor::saveImage(const std::string& savePath, Image& image){
     try {
         const std::vector<uint8_t>& imageData = image.getFrameData();
-        cv::Mat outputMat(image.getHeight(), image.getWidth(), CV_8UC3, const_cast<uint8_t*>(imageData.data()));
+        cv::Mat outputMat(image.getHeight(), image.getWidth(), CV_8UC(image.getChannels()), const_cast<uint8_t*>(imageData.data()));
         return cv::imwrite(savePath, outputMat);
     } catch(const std::exception& error){
         std::cerr << "Save Image - Exception " << error.what() << "\n";

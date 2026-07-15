@@ -12,6 +12,7 @@ public:
 
     static std::string findMediaPath();
     static std::string getImageFolder(const std::string& fullPath);
+    static std::string getImageFormat(const std::string& path);
 };
 
 #endif // UTIL_H

@@ -29,6 +29,10 @@ Image FilterSobel::applyFilter(const Image& inputImage)
             rowsPerThread[threadID]++;
             for (int x = 1; x < iWidth - 1; ++x) {
                 for (int c = 0; c < iChannels; ++c) {
+                    if(c == 3) {
+                        outputData[(y * iWidth + x) * iChannels + c] = inputData[(y * iWidth + x) * iChannels + c];
+                        continue;
+                    }
                     int gx = 0;
                     int gy = 0;
 
