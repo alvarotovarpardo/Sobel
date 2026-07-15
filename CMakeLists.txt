@@ -139,3 +139,7 @@ endif()
 if(BUILD_ANDROID)
     add_subdirectory(android)
 endif()
+
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/media/ DESTINATION media/)
+
+include(CPack)
