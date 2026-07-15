@@ -1,6 +1,7 @@
 #include "image.h"
 
 Image::Image() : m_iWidth(0), m_iHeight(0), m_iChannels(0) {
+    LOG("Initializing Image default constructor");
 }
 
 Image::Image(int width, int height, int channels, const uint8_t* rawData) 
@@ -11,4 +12,5 @@ Image::Image(int width, int height, int channels, const uint8_t* rawData)
     if (rawData != nullptr && imageSize > 0) {
         matData.assign(rawData, rawData + imageSize);
     }
+    LOG("Initializing Image overloaded constructor");
 }

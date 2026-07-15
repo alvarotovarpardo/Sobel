@@ -9,8 +9,9 @@ int main(int argc, char** argv)
     if (argc > 1) {
         filterName = argv[1];
     }
-
+    LOG("Initializing program.");
     try {
+        
         std::unique_ptr<Image> pImage = ImageProcessor::loadImage("C:/CODE2/Sobel/media/input_sample.jpg");
         if(pImage == nullptr) return -1;
 

@@ -15,10 +15,10 @@ std::unique_ptr<FilterBase> FilterSelector::createFilter(const EnumFilterType fi
 
 std::unique_ptr<FilterBase> FilterSelector::createFilter(const std::string& filterName)
 {
-
+    LOG(filterName + std::string(" selected."));
     if (filterName == "sobel" || filterName == "SOBEL") {
         return createFilter(FILTER_SOBEL);
     }
-        
+    LOG("Unknown filter.");    
     throw std::invalid_argument("Unknown filter " + filterName);
 }
