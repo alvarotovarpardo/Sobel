@@ -1,8 +1,9 @@
 # Sobel
 Application of Sobel algorithm. 
-## Compilation with Conan
 
-Conan can be installed through
+## Compilation
+CMake is required.
+Conan can be installed (Python & Pip is required) through
 ```bash
 pip install conan
 conan profile detect
