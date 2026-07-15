@@ -21,3 +21,5 @@ cmake --install . --config Release --prefix "../dist"
 ```
 
 - Cli -> For console application; .exe file generated @ build/cli/(build_type)/SobelCli.exe
+- Android -> For Android App + basic UI
+- <img width="215" height="445" alt="Captura de pantalla 2026-07-15 122308" src="https://github.com/user-attachments/assets/e47bcd67-1703-4732-88df-e4490e08d2e7" />
