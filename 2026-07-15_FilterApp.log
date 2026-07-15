@@ -1,36 +1,36 @@
-[12:13:21] [main]: No path provided. Searching for media path...
-[12:13:21] [findMediaPath]: Searching for /media/ folder...
-[12:13:21] [findMediaPath]: /media/ folder found.
-[12:13:21] [main]: Initializing program.
-[12:13:21] [Image]: Initializing Image default constructor
-[12:13:21] [loadImage]: Image loaded successfully.
-[12:13:21] [createFilter]: Sobel filter selected.
-[12:13:21] [applyFilter]: Applying Filter Sobel...
-[12:13:21] [applyFilter]: 24 number of threads available.
-[12:13:21] [applyFilter]: 24 threads on execution.
-[12:13:21] [applyFilter]: Sobel Algorithm ended. Execution time: 0.113490 ms for 1920x1280 pixels processed.
-[12:13:21] [applyFilter]: Thread 0 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 1 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 2 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 3 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 4 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 5 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 6 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 7 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 8 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 9 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 10 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 11 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 12 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 13 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 14 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 15 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 16 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 17 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 18 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 19 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 20 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 21 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 22 processed 1278 rows.
-[12:13:21] [applyFilter]: Thread 23 processed 1278 rows.
-[12:13:21] [saveImage]: Image saved successfully
+[12:35:25] [main]: No path provided. Searching for media path...
+[12:35:25] [findMediaPath]: Searching for /media/ folder...
+[12:35:25] [findMediaPath]: /media/ folder found.
+[12:35:25] [main]: Initializing program.
+[12:35:25] [Image]: Initializing Image default constructor
+[12:35:25] [loadImage]: Image loaded successfully.
+[12:35:25] [createFilter]: Sobel filter selected.
+[12:35:25] [applyFilter]: Applying Filter Sobel...
+[12:35:25] [applyFilter]: 24 number of threads available.
+[12:35:25] [applyFilter]: 24 threads on execution.
+[12:35:26] [applyFilter]: Sobel Algorithm ended. Execution time: 0.114595 ms for 1920x1280 pixels processed.
+[12:35:26] [applyFilter]: Thread 0 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 1 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 2 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 3 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 4 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 5 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 6 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 7 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 8 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 9 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 10 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 11 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 12 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 13 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 14 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 15 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 16 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 17 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 18 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 19 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 20 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 21 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 22 processed 1278 rows.
+[12:35:26] [applyFilter]: Thread 23 processed 1278 rows.
+[12:35:26] [main]: Image saved successfully

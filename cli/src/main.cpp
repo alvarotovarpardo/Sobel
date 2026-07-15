@@ -23,7 +23,7 @@ int main(int argc, char** argv)
             return -1;
         }
     }
-    std::string outputPath = imagePath + "/output_image.jpg";
+    std::string outputPath = imageFolder + "/output_image.jpg";
 
     if(argc > 2) {
         filterName = argv[2];
@@ -44,8 +44,12 @@ int main(int argc, char** argv)
             std::cerr << "Null filter selected" << std::endl;
         }
 
-        if(!ImageProcessor::saveImage(outputPath, *pOutputImage)) return -1;
-
+        if(!ImageProcessor::saveImage(outputPath, *pOutputImage)){
+            LOG("Image could not be saved at " + outputPath);
+            return -1;
+        } else {
+            LOG("Image saved successfully");
+        }
     } catch (const std::exception& e) {
         std::cerr << "Execution error: " << e.what() << std::endl;
         return -1;
