@@ -2,17 +2,38 @@
 #include <filesystem>
 #include "filter_selector.h"
 #include "image_processor.h"
+#include "util.h"
 
 int main(int argc, char** argv)
 {
     std::string filterName = "Sobel";
+    std::string imagePath;
+    std::string imageFolder;
     if (argc > 1) {
-        filterName = argv[1];
+        imagePath = argv[1];
+        imageFolder = Util::getImageFolder(imagePath);
+        LOG("Using provided path: " + imagePath);
+    } else {
+        try {
+            LOG("No path provided. Searching for media path...");
+            imageFolder = Util::findMediaPath();
+            imagePath = imageFolder + "/input_sample.jpg";
+        } catch (const std::exception& e) {
+            LOG("Error finding media path: " + std::string(e.what()));
+            return -1;
+        }
     }
+    std::string outputPath = imagePath + "/output_image.jpg";
+
+    if(argc > 2) {
+        filterName = argv[2];
+        LOG(filterName + "introduced as input.");
+    }
+
     LOG("Initializing program.");
     try {
         
-        std::unique_ptr<Image> pInputImage = ImageProcessor::loadImage("C:/CODE2/Sobel/media/input_sample.jpg");
+        std::unique_ptr<Image> pInputImage = ImageProcessor::loadImage(imagePath);
         if(pInputImage == nullptr) return -1;
 
         std::unique_ptr<FilterBase> pFilter = FilterSelector::createFilter(filterName);
@@ -23,7 +44,7 @@ int main(int argc, char** argv)
             std::cerr << "Null filter selected" << std::endl;
         }
 
-        if(!ImageProcessor::saveImage("C:/CODE2/Sobel/media/output_sample.jpg", *pOutputImage)) return -1;
+        if(!ImageProcessor::saveImage(outputPath, *pOutputImage)) return -1;
 
     } catch (const std::exception& e) {
         std::cerr << "Execution error: " << e.what() << std::endl;

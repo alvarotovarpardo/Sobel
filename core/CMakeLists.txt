@@ -4,6 +4,7 @@ set(CORE_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/image.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/image_processor.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/logger.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/util.cpp
 )
 
 add_library(SobelCore STATIC ${CORE_SRC})
