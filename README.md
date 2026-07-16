@@ -1,5 +1,5 @@
 # Sobel
-Application of Sobel algorithm. 
+Scalable application of Sobel algorithm. 
 
 ## Compilation
 CMake is required.
