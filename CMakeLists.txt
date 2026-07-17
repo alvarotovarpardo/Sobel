@@ -97,7 +97,7 @@ elseif(UNIX)
     endif()
 endif()
 
-project(Sobel CXX)
+project(Sobel CXX CUDA)
 
 set(TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/generators/conan_toolchain.cmake" CACHE STRING "Toolchain file")
 
